@@ -19,8 +19,6 @@ public class DataSourceTest {
     private DataSource dataSource;
     @Test
     public void getConnection() throws SQLException {
-        try (Connection connection= dataSource.getConnection()){
-
-        }
+        System.out.println("hello test");
     }
 }
