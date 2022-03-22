@@ -6,6 +6,8 @@ import com.example.fastfoodshop.services.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/products")
 class ProductController {
@@ -23,5 +25,10 @@ class ProductController {
     @ExceptionHandler(ProductNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     void productNotFound() {
+    }
+
+    @GetMapping
+    List<Product> getAll(){
+        return productService.findAll();
     }
 }
