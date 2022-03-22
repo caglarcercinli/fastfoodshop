@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class DefaultProductService implements ProductService{
+public class DefaultProductService implements ProductService {
     private final ProductRepository productRepository;
 
     public DefaultProductService(ProductRepository productRepository) {
