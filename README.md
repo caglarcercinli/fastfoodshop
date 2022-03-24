@@ -78,4 +78,15 @@ main
     mvn spring-boot:run //this runs the app on localhost 8080
     mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8085 //this runs the app on q specific port; 8085
 
+**PROVIDE LOMBOK
+
+    Go to File > Settings > Plugins
+    Click on Installed tab
+    Look for Lombok Plugin
+        If you can find it is already installed
+            Click on box to enable Lombok
+        If you cannot find it click on Marketplace tab
+            Search for Lombok and click on install
+            Click on box to enable Lombok
+
 **JENKINS JENKINS JENKINS JENKINS JENKINS JENKINS
