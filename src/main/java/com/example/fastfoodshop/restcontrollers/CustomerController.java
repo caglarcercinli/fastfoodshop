@@ -26,4 +26,9 @@ class CustomerController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     void customerNotFound() {
     }
+
+    @GetMapping
+    List<Customer> getAll() {
+        return customerService.findAll();
+    }
 }
