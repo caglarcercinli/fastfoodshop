@@ -96,5 +96,5 @@ main
     change to fastfoodshop user
     go to the folder of the sql file
     run psql command
-    run \i fastfoodshop.psql
+    run \i fastfoodshop.sql
     it drops, re-creates and fills the tables
