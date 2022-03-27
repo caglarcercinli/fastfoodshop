@@ -89,4 +89,19 @@ main
             Search for Lombok and click on install
             Click on box to enable Lombok
 
-**JENKINS JENKINS
+**JENKINS 
+
+    follow the some steps of the jenkins.pdf (vdab):
+        2.2 install a war file
+        2.3 install git and mail
+        2.4 for jdk: use /usr/lib/jvm/java-1.11.0-openjdk-amd64(different yes), 
+            for mvn:/usr/share/maven
+        2.5 only install maven integration
+        for a job:
+            follow this steps: https://github.com/jenkinsci/ghprb-plugin/blob/master/README.md
+            except this link: https://stackoverflow.com/questions/23906352/git-pullrequest-job-failed-couldnt-find-any-revision-to-build-verify-the-repo
+
+        finally: you would be able to run and login to a jenkins war application on localhost 8081 and
+        with the job you can test the pr's. if the tests fail, then pr branch fail, shouldnt merge.
+
+        
