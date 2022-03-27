@@ -25,15 +25,17 @@
     tables and insert data.
 
 **jdk download command: sudo apt install openjdk-11-jdk-headless
+
     after that: intellij\file\project structure\sdk\ choose the found jdk folder
     in the end:run the command:readlink -f $(which java)
     the reply should be same with the external libraries in the project folder: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
     to test: javac MainTest.java and java MainTest commands, reply should be: hello hello world
 
- 14-provide-a-gitignore-file
-**about gitignore
+ **provide-a-gitignore-file
+
+    **about gitignore
     if you add a file and dont want to push, right click and add to gitignore, it is added to gitignore and push gitignore
-=======
+
 **database and tables setup
 
     create table products (id serial primary key, name varchar (50) not null, price varchar (50) not null);
