@@ -90,3 +90,11 @@ main
             Click on box to enable Lombok
 
 **JENKINS JENKINS JENKINS JENKINS JENKINS JENKINS
+
+**HOW TO RUN A SQL FILE AND CREATE THE DATABASE
+
+    change to fastfoodshop user
+    go to the folder of the sql file
+    run psql command
+    run \i fastfoodshop.psql
+    it drops, re-creates and fills the tables
