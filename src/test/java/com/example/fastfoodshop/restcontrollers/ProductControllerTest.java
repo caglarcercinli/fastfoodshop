@@ -43,5 +43,6 @@ public class ProductControllerTest extends AbstractTransactionalJUnit4SpringCont
     void allProductsReading() throws Exception {
         mvc.perform(get("/products"))
                 .andExpectAll(status().isBadRequest());
+        //failed test
     }
 }
