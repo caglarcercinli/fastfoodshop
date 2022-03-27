@@ -38,4 +38,10 @@ public class ProductControllerTest extends AbstractTransactionalJUnit4SpringCont
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("id").value(id));
     }
+
+    @Test
+    void allProductsReading() throws Exception {
+        mvc.perform(get("/products"))
+                .andExpectAll(status().isOk());
+    }
 }
