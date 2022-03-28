@@ -25,15 +25,17 @@
     tables and insert data.
 
 **jdk download command: sudo apt install openjdk-11-jdk-headless
+
     after that: intellij\file\project structure\sdk\ choose the found jdk folder
     in the end:run the command:readlink -f $(which java)
     the reply should be same with the external libraries in the project folder: /usr/lib/jvm/java-11-openjdk-amd64/bin/java
     to test: javac MainTest.java and java MainTest commands, reply should be: hello hello world
 
- 14-provide-a-gitignore-file
-**about gitignore
+ **provide-a-gitignore-file
+
+    **about gitignore
     if you add a file and dont want to push, right click and add to gitignore, it is added to gitignore and push gitignore
-=======
+
 **database and tables setup
 
     create table products (id serial primary key, name varchar (50) not null, price varchar (50) not null);
@@ -89,4 +91,19 @@ main
             Search for Lombok and click on install
             Click on box to enable Lombok
 
-**JENKINS JENKINS JENKINS JENKINS JENKINS JENKINS
+**JENKINS 
+
+    follow the some steps of the jenkins.pdf (vdab):
+        2.2 install a war file
+        2.3 install git and mail
+        2.4 for jdk: use /usr/lib/jvm/java-1.11.0-openjdk-amd64(different yes), 
+            for mvn:/usr/share/maven
+        2.5 only install maven integration
+        for a job:
+            follow this steps: https://github.com/jenkinsci/ghprb-plugin/blob/master/README.md
+            except this link: https://stackoverflow.com/questions/23906352/git-pullrequest-job-failed-couldnt-find-any-revision-to-build-verify-the-repo
+
+        finally: you would be able to run and login to a jenkins war application on localhost 8081 and
+        with the job you can test the pr's. if the tests fail, then pr branch fail, shouldnt merge.
+
+        
