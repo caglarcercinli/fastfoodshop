@@ -107,3 +107,12 @@ main
         with the job you can test the pr's. if the tests fail, then pr branch fail, shouldnt merge.
 
         
+**JENKINS JENKINS JENKINS JENKINS JENKINS JENKINS
+
+**HOW TO RUN A SQL FILE AND CREATE THE DATABASE
+
+    change to fastfoodshop user
+    go to the folder of the sql file
+    run psql command
+    run \i fastfoodshop.sql
+    it drops, re-creates and fills the tables
