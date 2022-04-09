@@ -106,9 +106,6 @@ main
         finally: you would be able to run and login to a jenkins war application on localhost 8081 and
         with the job you can test the pr's. if the tests fail, then pr branch fail, shouldnt merge.
 
-        
-**JENKINS JENKINS JENKINS JENKINS JENKINS JENKINS
-
 **HOW TO RUN A SQL FILE AND CREATE THE DATABASE
 
     change to fastfoodshop user
@@ -116,3 +113,10 @@ main
     run psql command
     run \i fastfoodshop.sql
     it drops, re-creates and fills the tables
+
+**KEYCLOAK SECURITY CONFIG
+
+    follow the steps: https://www.baeldung.com/spring-boot-keycloak
+    realm: SpringBootKeyCloak, role: manager, user: owner
+    make a token request on postman, body of the request should be with username and password
+    copy the token and use it in the request of customers (check the postman sample requests)
