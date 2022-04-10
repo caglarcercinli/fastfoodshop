@@ -38,9 +38,4 @@ public class CustomerControllerTest extends AbstractTransactionalJUnit4SpringCon
                 .andExpect(jsonPath("id").value(id));
     }
 
-    @Test
-    void allCustomersReading() throws Exception {
-        mvc.perform(get("/customers"))
-                .andExpectAll(status().isOk());
-    }
 }
