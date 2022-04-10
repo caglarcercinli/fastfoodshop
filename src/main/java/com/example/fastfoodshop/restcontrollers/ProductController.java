@@ -22,7 +22,7 @@ class ProductController {
 
     @GetMapping("{id}")
     Product get(@PathVariable long id) {
-        logger.info("product id: "+id+" provided");
+        logger.info("product id: "+id+" requested");
         return productService.findById(id).orElseThrow(ProductNotFoundException::new);
     }
 

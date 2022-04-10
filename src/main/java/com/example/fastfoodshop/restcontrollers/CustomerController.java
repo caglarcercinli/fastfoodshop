@@ -23,7 +23,11 @@ class CustomerController {
 
     @GetMapping("{id}")
     Customer get(@PathVariable long id, Principal principal) {
-        logger.info("customer id:"+id+" is provided to "+principal.getName());
+        try {
+            logger.info("customer id:"+id+" is requested by "+principal.getName());
+        } catch (Exception e) {
+            logger.warn("vacant customer is requested.");
+        }
         return customerService.findById(id).orElseThrow(CustomerNotFoundException::new);
     }
 
