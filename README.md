@@ -119,6 +119,8 @@ main
 **KEYCLOAK SECURITY CONFIG
 
     follow the steps: https://www.baeldung.com/spring-boot-keycloak
+        cd keycloak-13.0.1/bin
+        ./standalone.sh -Djboss.socket.binding.port-offset=100
     realm: SpringBootKeyCloak, role: manager, user: owner
     make a token request on postman, body of the request should be with username and password
     copy the token and use it in the request of customers (check the postman sample requests)
