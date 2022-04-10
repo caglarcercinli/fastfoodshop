@@ -99,6 +99,8 @@ main
         2.4 for jdk: use /usr/lib/jvm/java-1.11.0-openjdk-amd64(different yes), 
             for mvn:/usr/share/maven
         2.5 only install maven integration
+            java –jar jenkins.war –-httpPort=8081
+            username: fastfoodshop
         for a job:
             follow this steps: https://github.com/jenkinsci/ghprb-plugin/blob/master/README.md
             except this link: https://stackoverflow.com/questions/23906352/git-pullrequest-job-failed-couldnt-find-any-revision-to-build-verify-the-repo
@@ -117,5 +119,6 @@ main
 **KEYCLOAK SECURITY CONFIG
 
     follow the steps: https://www.baeldung.com/spring-boot-keycloak
+    realm: SpringBootKeyCloak, role: manager, user: owner
     make a token request on postman, body of the request should be with username and password
-    copy the token and use it in the request of customers.
+    copy the token and use it in the request of customers (check the postman sample requests)
