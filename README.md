@@ -124,3 +124,9 @@ main
     realm: SpringBootKeyCloak, role: manager, user: owner
     make a token request on postman, body of the request should be with username and password
     copy the token and use it in the request of customers (check the postman sample requests)
+
+**KEYCLOAK DEPLOYED TO HEROKU
+
+    the url of the keycloak container: https://fastfoodsec.herokuapp.com/auth/
+    //TODO when this app deployed, the configuration of the keycloak container has to be changed
+    related button: https://elements.heroku.com/buttons/dpikalov/keycloak-heroku-free
