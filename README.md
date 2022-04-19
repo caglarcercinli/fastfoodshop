@@ -69,14 +69,12 @@ main
 
 **RUN PROJECT ON TERMINAL
 
-    cd shop
-    mvn package //this builds project, run tests and creates a jar file in target, 
+    mvn package spring-boot:repackage //this builds project, run tests and creates a jar file in target, 
     java -jar target/shop-0.0.1-SNAPSHOT.jar // run the jar file
     ctrl-c //IMPORTANT, kill the process with ctrl-c, otherwise it causes errors
 
 **RUN APP ON TERMINAL
 
-    cd shop
     mvn spring-boot:run //this runs the app on localhost 8080
     mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8085 //this runs the app on q specific port; 8085
 
