@@ -6,9 +6,14 @@ import com.example.fastfoodshop.services.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/products")
@@ -36,5 +41,18 @@ class ProductController {
     List<Product> getAll() {
         logger.info("All products are provided");
         return productService.findAll();
+    }
+
+    @PostMapping
+    void post(@RequestBody @Valid Product product){
+        productService.create(product);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    Map<String,String> wrongData(MethodArgumentNotValidException ex) {
+        return ex.getBindingResult().getFieldErrors().stream()
+                .collect(Collectors.toMap(FieldError::getField,
+                        FieldError::getDefaultMessage));
     }
 }

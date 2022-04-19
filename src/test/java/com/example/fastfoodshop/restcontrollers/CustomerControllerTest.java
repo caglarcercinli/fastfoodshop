@@ -1,41 +1,45 @@
 package com.example.fastfoodshop.restcontrollers;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-@Sql("/insertCustomer.sql")
-public class CustomerControllerTest extends AbstractTransactionalJUnit4SpringContextTests {
-    private final MockMvc mvc;
-
-    public CustomerControllerTest(MockMvc mvc) {
-        this.mvc = mvc;
-    }
-
-    private long idFromTestCustomer() {
-        return jdbcTemplate.queryForObject("SELECT id FROM customers WHERE name='test'", Long.class);
+public class CustomerControllerTest extends AbstractTest{
+    @Override
+    @Before
+    public void setUp() {
+        super.setUp();
     }
 
     @Test
-    void nonExistingCustomerReading() throws Exception {
-        mvc.perform(get("/customers/{id}", -1))
-                .andExpect(status().isNotFound());
+    public void getCustomerTest() throws Exception {
+        String uri = "/customers/1";
+        ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.get(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE));
+
+        MvcResult mvcResult = resultActions.andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
     }
 
     @Test
-    void existingCustomerReading() throws Exception {
-        var id = idFromTestCustomer();
-        mvc.perform(get("/customers/{id}", id))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("id").value(id));
+    public void getCustomersTest() throws Exception {
+        String uri = "/customers";
+        ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.get(uri)
+                        .contentType(MediaType.APPLICATION_JSON_VALUE));
+
+        MvcResult mvcResult = resultActions.andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
     }
+
 
 }

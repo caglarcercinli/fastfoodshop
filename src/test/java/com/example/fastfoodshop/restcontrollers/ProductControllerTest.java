@@ -1,47 +1,69 @@
 package com.example.fastfoodshop.restcontrollers;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
-import org.springframework.test.web.servlet.MockMvc;
+import com.example.fastfoodshop.domain.Product;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import java.math.BigDecimal;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-@Sql("/insertProduct.sql")
-public class ProductControllerTest extends AbstractTransactionalJUnit4SpringContextTests {
-    private final MockMvc mvc;
+import static org.junit.Assert.assertEquals;
 
-    public ProductControllerTest(MockMvc mvc) {
-        this.mvc = mvc;
+public class ProductControllerTest extends AbstractTest{
+    @Override
+    @Before
+    public void setUp() {
+        super.setUp();
     }
+    //TODO test product has to be deleted after delete method created
+    @Test
+    public void postProductTest() throws Exception {
+        String uri = "/products";
+        Product product = new Product();
+        product.setPrice(BigDecimal.ONE);
+        product.setName("testProduct");
+        String inputJson = super.mapToJson(product);
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(inputJson)).andReturn();
 
-    private long idFromTestProduct() {
-        return jdbcTemplate.queryForObject("SELECT id FROM products WHERE name='test'", Long.class);
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
+    }
+    @Test
+    public void getProductTest() throws Exception {
+        String uri = "/products/1";
+        ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.get(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE));
+
+        MvcResult mvcResult = resultActions.andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
     }
 
     @Test
-    void nonExistingProductReading() throws Exception {
-        mvc.perform(get("/products/{id}", -1))
-                .andExpect(status().isNotFound());
+    public void nonExistingGetProductTest() throws Exception {
+        String uri = "/products/-1";
+        ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.get(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE));
+
+        MvcResult mvcResult = resultActions.andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(404, status);
     }
 
     @Test
-    void existingProductReading() throws Exception {
-        var id = idFromTestProduct();
-        mvc.perform(get("/products/{id}", id))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("id").value(id));
+    public void getProductsTest() throws Exception {
+        String uri = "/products";
+        ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.get(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE));
+
+        MvcResult mvcResult = resultActions.andReturn();
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(200, status);
     }
 
-    @Test
-    void allProductsReading() throws Exception {
-        mvc.perform(get("/products"))
-                .andExpectAll(status().isOk());
-    }
 }
