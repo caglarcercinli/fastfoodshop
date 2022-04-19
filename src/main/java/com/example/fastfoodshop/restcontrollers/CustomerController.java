@@ -22,9 +22,9 @@ class CustomerController {
     }
 
     @GetMapping("{id}")
-    Customer get(@PathVariable long id, Principal principal) {
+    Customer get(@PathVariable long id /*, Principal principal*/) {
         try {
-            logger.info("customer id:"+id+" is requested by "+principal.getName());
+//            logger.info("customer id:"+id+" is requested by "+principal.getName());
         } catch (Exception e) {
             logger.warn("vacant customer is requested.");
         }
@@ -37,8 +37,8 @@ class CustomerController {
     }
 
     @GetMapping
-    List<Customer> getAll(Principal principal) {
-        logger.info("All customers are provided to "+principal.getName());
+    List<Customer> getAll() {
+//        logger.info("All customers are provided to "+principal.getName());
         return customerService.findAll();
     }
 }
