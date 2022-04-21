@@ -56,6 +56,7 @@ class ProductController {
                 .collect(Collectors.toMap(FieldError::getField,
                         FieldError::getDefaultMessage));
     }
+    
     @DeleteMapping("{id}")
     void delete(@PathVariable long id) {
         productService.delete(id);
