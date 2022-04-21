@@ -83,5 +83,13 @@ public class ProductControllerTest extends AbstractTest{
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
     }
-
+    @Test
+    public void nonExistingDeleteProductTest() throws Exception {
+        String uri = "/products/-1";
+        ResultActions resultActionsDelete = mvc.perform(MockMvcRequestBuilders.delete(uri)
+                .contentType(MediaType.APPLICATION_JSON_VALUE));
+        MvcResult mvcResultForDelete = resultActionsDelete.andReturn();
+        int statusForDelete = mvcResultForDelete.getResponse().getStatus();
+        assertEquals(404, statusForDelete);
+    }
 }
