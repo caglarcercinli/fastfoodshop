@@ -10,5 +10,5 @@ public interface ProductService {
     Optional<Product> findById(long id);
     List<Product> findAll();
     void create(Product product);
-
+    void delete(long id);
 }

@@ -1,7 +1,9 @@
 package com.example.fastfoodshop.services;
 
 import com.example.fastfoodshop.domain.Product;
+import com.example.fastfoodshop.exceptions.ProductNotFoundException;
 import com.example.fastfoodshop.repositories.ProductRepository;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,5 +34,14 @@ public class DefaultProductService implements ProductService {
     @Override
     public void create(Product product) {
         productRepository.save(product);
+    }
+
+    @Override
+    public void delete(long id) {
+        try {
+            productRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ProductNotFoundException();
+        }
     }
 }
