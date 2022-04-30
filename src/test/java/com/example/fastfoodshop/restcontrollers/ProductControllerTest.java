@@ -19,7 +19,6 @@ public class ProductControllerTest extends AbstractTest{
     public void setUp() {
         super.setUp();
     }
-    //TODO test product has to be deleted after delete method created
     @Test
     public void postProductAndDeleteProductTest() throws Exception {
         // a product is to be posted

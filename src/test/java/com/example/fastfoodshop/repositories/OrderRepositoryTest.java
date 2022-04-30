@@ -24,6 +24,6 @@ class OrderRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests 
     @Test
     void findById(){
         assertThat(orderRepository.findById(idFromTestOrder()))
-                .hasValueSatisfying(order -> assertThat(order.getCustomer().getName()).isEqualTo("test"));
+                .hasValueSatisfying(order -> assertThat(order.getCustomer_id()).isPositive());
     }
 }
