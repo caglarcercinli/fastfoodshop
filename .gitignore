@@ -1,4 +1,4 @@
-/src/main/resources/application.properties
+
 
 /.idea/.gitignore
 /target/test-classes/com/example/fastfoodshop/restcontrollers/AbstractTest.class
@@ -63,3 +63,4 @@
 /target/surefire-reports/TEST-com.example.fastfoodshop.restcontrollers.ProductControllerTest.xml
 /.idea/uiDesigner.xml
 /.idea/vcs.xml
+/src/main/resources/
