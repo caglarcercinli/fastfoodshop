@@ -9,8 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String MANAGER = "manager";
-    private static final String HELPDESKMEDEWERKER = "helpdeskmedewerker";
-    private static final String MAGAZIJNIER = "magazijnier";
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
