@@ -1,4 +1,4 @@
-INSERT INTO customers (name)
-VALUES ('test');
-INSERT INTO ORDERS (id, customer_id)
-VALUES (2, (select id from customers where name='test'));
+INSERT INTO customers (name, password, enabled)
+VALUES ('test', 'test', true);
+INSERT INTO ORDERS (customer_id)
+VALUES ((select id from customers where name='test'));
