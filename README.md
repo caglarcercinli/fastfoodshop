@@ -128,3 +128,12 @@ main
     the url of the keycloak container: https://fastfoodsec.herokuapp.com/auth/
     //TODO when this app deployed, the configuration of the keycloak container has to be changed
     related button: https://elements.heroku.com/buttons/dpikalov/keycloak-heroku-free
+
+**DOCKER
+
+    first build (check run project on terminal)
+    check images: sudo docker images
+    docker build: sudo docker build -t fastfoodshop
+    docker run:  sudo docker run -p 8080:8080 fastfoodshop
+    docker remove:  sudo docker image rm  --force fastfoodshop
+
