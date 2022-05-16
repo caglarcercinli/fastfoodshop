@@ -133,7 +133,7 @@ main
 
     first build (check run project on terminal)
     check images: sudo docker images
-    docker build: sudo docker build -t fastfoodshop
+    docker build: sudo docker build -t fastfoodshop .
     docker run:  sudo docker run -p 8080:8080 fastfoodshop
     docker remove:  sudo docker image rm  --force fastfoodshop
 
