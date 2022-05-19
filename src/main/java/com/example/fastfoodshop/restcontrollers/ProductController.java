@@ -5,14 +5,12 @@ import com.example.fastfoodshop.exceptions.ProductNotFoundException;
 import com.example.fastfoodshop.services.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -37,6 +35,7 @@ class ProductController {
     void productNotFound() {
         logger.warn("vacant product is requested");
     }
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     List<Product> getAll() {
         logger.info("All products are provided");
