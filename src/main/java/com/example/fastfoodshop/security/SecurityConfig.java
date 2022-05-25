@@ -1,5 +1,6 @@
 package com.example.fastfoodshop.security;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -11,6 +12,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String MANAGER = "manager";
+    private static final String CUSTOMER = "customer";
     private final DataSource dataSource;
 
     SecurityConfig(DataSource dataSource) {
@@ -38,10 +40,13 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin();
-        http.authorizeRequests(requests -> requests
-                .mvcMatchers("/customers")
-                .hasAuthority(MANAGER)
-        );
+     http.httpBasic().and().authorizeRequests()
+             .antMatchers(HttpMethod.GET, "/orders/**").hasAuthority(MANAGER)
+             .antMatchers(HttpMethod.POST, "/orders/**").hasAuthority(CUSTOMER)
+             .antMatchers(HttpMethod.GET, "/customers/**").hasAuthority(MANAGER)
+             .antMatchers(HttpMethod.POST, "/products/**").hasAuthority(MANAGER)
+             .and()
+             .csrf().disable()
+             .formLogin().disable();
     }
 }
