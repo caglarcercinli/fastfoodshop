@@ -3,6 +3,7 @@ package com.example.fastfoodshop.restcontrollers;
 import com.example.fastfoodshop.domain.User;
 import com.example.fastfoodshop.exceptions.UserNotFoundException;
 import com.example.fastfoodshop.services.UserService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -12,13 +13,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@RequiredArgsConstructor
 class UserController {
     private final UserService userService;
     Logger logger = LoggerFactory.getLogger(UserController.class);
-
-    UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @GetMapping("{id}")
     User get(@PathVariable long id) {
