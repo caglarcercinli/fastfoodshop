@@ -70,7 +70,7 @@ public class OrderControllerTest extends AbstractTest {
         // an order is to be posted
         String uri = "/orders";
         Order order = new Order();
-        order.setCustomer_id(1L);
+        order.setUser_id(1L);
         String inputJson = super.mapToJson(order);
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)

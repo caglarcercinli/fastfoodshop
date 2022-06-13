@@ -11,19 +11,19 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest(showSql = false)
-@Sql("/insertCustomer.sql")
+@Sql("/insertUser.sql")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class CustomerRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests {
+public class UserRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests {
     @Autowired
-    private CustomerRepository repository;
+    private UserRepository repository;
 
-    private long idFromTestCustomer() {
-        return jdbcTemplate.queryForObject("SELECT id FROM customers WHERE name='test'", Long.class);
+    private long idFromTestUser() {
+        return jdbcTemplate.queryForObject("SELECT id FROM users WHERE name='test'", Long.class);
     }
 
     @Test
     public void findById() {
-        assertThat(repository.findById(idFromTestCustomer()))
-                .hasValueSatisfying(customer -> assertThat(customer.getName()).isEqualTo("test"));
+        assertThat(repository.findById(idFromTestUser()))
+                .hasValueSatisfying(user -> assertThat(user.getName()).isEqualTo("test"));
     }
 }

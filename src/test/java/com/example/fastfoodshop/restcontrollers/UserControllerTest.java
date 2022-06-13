@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-public class CustomerControllerTest extends AbstractTest{
+public class UserControllerTest extends AbstractTest{
     @Override
     @Before
     public void setUp() {
@@ -20,8 +20,8 @@ public class CustomerControllerTest extends AbstractTest{
     }
 
     @Test
-    public void getCustomerTest() throws Exception {
-        String uri = "/customers/1";
+    public void getUserTest() throws Exception {
+        String uri = "/userss/1";
         ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.get(uri)
                 .contentType(MediaType.APPLICATION_JSON_VALUE));
 
@@ -31,8 +31,8 @@ public class CustomerControllerTest extends AbstractTest{
     }
 
     @Test
-    public void getCustomersTest() throws Exception {
-        String uri = "/customers";
+    public void getUsersTest() throws Exception {
+        String uri = "/users";
         ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.get(uri)
                         .contentType(MediaType.APPLICATION_JSON_VALUE));
 
