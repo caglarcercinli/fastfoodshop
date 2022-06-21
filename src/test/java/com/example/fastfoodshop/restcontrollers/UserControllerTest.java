@@ -21,7 +21,7 @@ public class UserControllerTest extends AbstractTest{
 
     @Test
     public void getUserTest() throws Exception {
-        String uri = "/userss/1";
+        String uri = "/users/1";
         ResultActions resultActions = mvc.perform(MockMvcRequestBuilders.get(uri)
                 .contentType(MediaType.APPLICATION_JSON_VALUE));
 
