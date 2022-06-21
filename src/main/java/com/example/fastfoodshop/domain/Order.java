@@ -12,4 +12,6 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long user_id;
+    private String address;
+    private String telnumber;
 }
