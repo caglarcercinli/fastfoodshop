@@ -11,5 +11,5 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long customer_id;
+    private long user_id;
 }

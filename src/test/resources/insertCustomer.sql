@@ -1,2 +1,2 @@
-INSERT INTO customers (name, password,enabled)
+INSERT INTO users (name, password,enabled)
 VALUES ('test', 'test', true);

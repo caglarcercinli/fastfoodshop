@@ -17,16 +17,16 @@ class OrderRepositoryTest extends AbstractTransactionalJUnit4SpringContextTests 
     public OrderRepositoryTest(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
-    private long idFromTestCustomer() {
-        return jdbcTemplate.queryForObject("SELECT id FROM customers WHERE name='test'", Long.class);
+    private long idFromTestUser() {
+        return jdbcTemplate.queryForObject("SELECT id FROM users WHERE name='test'", Long.class);
     }
     private long idFromTestOrder(){
-        return jdbcTemplate.queryForObject("SELECT id FROM orders WHERE customer_id="+idFromTestCustomer(), Long.class);
+        return jdbcTemplate.queryForObject("SELECT id FROM orders WHERE user_id="+idFromTestUser(), Long.class);
     }
 
     @Test
     void findById(){
         assertThat(orderRepository.findById(idFromTestOrder()))
-                .hasValueSatisfying(order -> assertThat(order.getCustomer_id()).isPositive());
+                .hasValueSatisfying(order -> assertThat(order.getUser_id()).isPositive());
     }
 }

@@ -38,7 +38,7 @@ public class OrderController {
     void orderNotFound() {
     }
 
-    @CrossOrigin(origins = "http://localhost:4200/**")
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
     void post(@RequestBody @Valid Order order){
         orderService.create(order);

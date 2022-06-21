@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/products")
 class ProductController {
     private final ProductService productService;
-    Logger logger = LoggerFactory.getLogger(CustomerController.class);
+    Logger logger = LoggerFactory.getLogger(UserController.class);
 
     public ProductController(ProductService productService) {
         this.productService = productService;
